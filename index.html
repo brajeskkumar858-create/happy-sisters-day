@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Sisters Day ❤️</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+overflow:hidden;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+background:linear-gradient(135deg,#ff4d6d,#ff9a9e,#fad0c4);
+font-family:Arial,sans-serif;
+}
+
+h1{
+font-size:55px;
+color:white;
+text-shadow:0 0 15px rgba(255,255,255,.8);
+animation:pulse 1.5s infinite;
+z-index:2;
+text-align:center;
+padding:20px;
+}
+
+@keyframes pulse{
+0%{transform:scale(1);}
+50%{transform:scale(1.1);}
+100%{transform:scale(1);}
+}
+
+.balloon{
+position:absolute;
+bottom:-150px;
+width:60px;
+height:80px;
+border-radius:50%;
+animation:float linear infinite;
+}
+
+.balloon:after{
+content:'';
+position:absolute;
+left:50%;
+top:80px;
+width:2px;
+height:60px;
+background<div id="balloons"></div>
+
+<script>
+const colors = [
+"#ff0000","#ff7f00","#ffff00","#00ff00",
+"#00bfff","#0000ff","#8a2be2","#ff1493"
+];
+
+for(let i=0;i<40;i++){
+
+let b=document.createElement("div");
+
+b.className="balloon";
+
+b.style.left=Math.random()*100+"vw";
+
+b.style.background=colors[Math.floor(Math.random()*colors.length)];
+
+b.style.animationDuration=(5+Math.random()*5)+"s";
+
+b.style.animationDelay=Math.random()*5+"s";
+
+document.getElementById("balloons").appendChild(b);
+
+}
+</script>
+
+</body>
+</html>
