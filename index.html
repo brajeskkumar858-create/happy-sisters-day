@@ -183,4 +183,187 @@ h.style.animationDelay=Math.random()*5+"s";
 
 document.body.appendChild(h);
 
+}<!-- Part 3: Sparkles + Confetti + Heart Rain -->
+
+<style>
+.sparkle {
+  position: fixed;
+  width: 5px;
+  height: 5px;
+  background: white;
+  border-radius: 50%;
+  animation: sparkle 2s infinite;
 }
+
+@keyframes sparkle {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(2);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0);
+    opacity: 0;
+  }
+}
+
+.confetti {
+  position: fixed;
+  width: 10px;
+  height: 20px;
+  animation: fall 4s linear infinite;
+}
+
+@keyframes fall {
+  from {
+    top: -20px;
+    transform: rotate(0deg);
+  }
+  to {
+    top: 100vh;
+    transform: rotate(720deg);
+  }
+}
+
+.heart {
+  position: fixed;
+  color: pink;
+  font-size: 25px;
+  animation: heartFall 5s linear infinite;
+}
+
+@keyframes heartFall {
+  from {
+    top: -30px;
+    opacity: 1;
+  }
+  to {
+    top: 100vh;
+    opacity: 0;
+  }
+}
+</style>
+
+<script>
+
+// Sparkles
+for(let i=0;i<60;i++){
+ let s=document.createElement("div");
+ s.className="sparkle";
+ s.style.left=Math.random()*100+"%";
+ s.style.top=Math.random()*100+"%";
+ s.style.animationDelay=Math.random()*2+"s";
+ document.body.appendChild(s);
+}
+
+// Confetti
+for(let i=0;i<80;i++){
+ let c=document.createElement("div");
+ c.className="confetti";
+ c.style.left=Math.random()*100+"%";
+ c.style.background="hsl("+Math.random()*360+",100%,50%)";
+ c.style.animationDelay=Math.random()*4+"s";
+ document.body.appendChild(c);
+}
+
+// Heart Rain
+setInterval(()=>{
+ let h=document.createElement("div");
+ h.className="heart";
+ h.innerHTML="❤️";
+ h.style.left=Math.random()*100+"%";
+ h.style.animationDuration=(3+Math.random()*3)+"s";
+ document.body.appendChild(h);
+
+ setTimeout(()=>{
+   h.remove();
+ },6000);
+
+},300);
+
+</script>
+  <!-- Part 4: Music + Glow Message -->
+
+<style>
+
+.glow {
+  color: white;
+  text-align: center;
+  font-size: 35px;
+  margin-top: 30px;
+  animation: glow 1.5s infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 10px pink;
+  }
+  to {
+    text-shadow: 0 0 30px red, 0 0 50px yellow;
+  }
+}
+
+.message {
+  text-align:center;
+  color:white;
+  font-size:22px;
+  margin:20px;
+  animation: appear 3s;
+}
+
+@keyframes appear {
+  from {
+    opacity:0;
+    transform:scale(0.5);
+  }
+  to {
+    opacity:1;
+    transform:scale(1);
+  }
+}
+
+.music-btn {
+  display:block;
+  margin:20px auto;
+  padding:12px 25px;
+  border-radius:30px;
+  border:none;
+  background:#ff4d88;
+  color:white;
+  font-size:18px;
+}
+
+</style>
+
+
+<h1 class="glow">
+❤️ Happy Sisters Day ❤️
+</h1>
+
+<div class="message">
+  Meri pyari sister ke liye ❤️<br><br>
+  Tum meri life ka sabse special part ho ✨<br>
+  Hamesha khush raho aur smile karti raho 😊
+</div>
+
+<button class="music-btn" onclick="playMusic()">
+🎵 Play Music
+</button>
+
+
+<audio id="song">
+<source src="music.mp3" type="audio/mpeg">
+</audio>
+
+
+<script>
+
+function playMusic(){
+ let m=document.getElementById("song");
+ m.play();
+}
+
+</script>
