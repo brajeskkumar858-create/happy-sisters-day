@@ -6,6 +6,7 @@
 <title>Happy Sisters Day ❤️</title>
 
 <style>
+
 *{
 margin:0;
 padding:0;
@@ -14,55 +15,138 @@ box-sizing:border-box;
 
 body{
 overflow:hidden;
+height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
-height:100vh;
-background:linear-gradient(135deg,#ff4d6d,#ff9a9e,#fad0c4);
+background:linear-gradient(135deg,#ff5f9e,#ff99cc,#ffd6e7);
 font-family:Arial,sans-serif;
+position:relative;
 }
 
 h1{
-font-size:55px;
-color:white;
-text-shadow:0 0 15px rgba(255,255,255,.8);
-animation:pulse 1.5s infinite;
-z-index:2;
+position:relative;
+z-index:100;
+font-size:60px;
+color:#fff;
 text-align:center;
-padding:20px;
+text-shadow:
+0 0 10px white,
+0 0 20px #ff66b2,
+0 0 40px #ff1493;
+animation:glow 2s infinite alternate,pulse 2s infinite;
+}
+
+@keyframes glow{
+from{
+text-shadow:
+0 0 10px white,
+0 0 20px hotpink;
+}
+to{
+text-shadow:
+0 0 20px white,
+0 0 40px deeppink,
+0 0 60px hotpink;
+}
 }
 
 @keyframes pulse{
 0%{transform:scale(1);}
-50%{transform:scale(1.1);}
+50%{transform:scale(1.08);}
 100%{transform:scale(1);}
 }
 
 .balloon{
 position:absolute;
 bottom:-150px;
-width:60px;
-height:80px;
+width:55px;
+height:70px;
 border-radius:50%;
-animation:float linear infinite;
+animation:fly linear infinite;
 }
 
 .balloon:after{
-content:'';
+content:"";
 position:absolute;
-left:50%;
-top:80px;
+left:26px;
+top:70px;
 width:2px;
 height:60px;
-background<div id="balloons"></div>
+background:white;
+}
+
+@keyframes fly{
+0%{
+transform:translateY(0);
+}
+100%{
+transform:translateY(-130vh);
+}
+}
+
+.heart{
+position:absolute;
+color:red;
+font-size:22px;
+animation:hearts 8s linear infinite;
+}
+
+@keyframes hearts{
+0%{
+transform:translateY(-20px);
+opacity:0;
+}
+20%{
+opacity:1;
+}
+100%{
+transform:translateY(110vh);
+opacity:0;
+}
+}
+
+.sparkle{
+position:absolute;
+width:4px;
+height:4px;
+background:white;
+border-radius:50%;
+animation:twinkle 2s infinite;
+}
+
+@keyframes twinkle{
+50%{
+opacity:0.2;
+transform:scale(2);
+}
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>🎉 Happy Sisters Day ❤️</h1>
+<div id="balloons"></div>
+<div id="hearts"></div>
 
 <script>
-const colors = [
-"#ff0000","#ff7f00","#ffff00","#00ff00",
-"#00bfff","#0000ff","#8a2be2","#ff1493"
+
+const colors=[
+"#ff1744",
+"#ff9100",
+"#ffee58",
+"#00e676",
+"#40c4ff",
+"#7c4dff",
+"#ff4081",
+"#ffffff"
 ];
 
-for(let i=0;i<40;i++){
+// 🎈 Balloons
+for(let i=0;i<60;i++){
 
 let b=document.createElement("div");
 
@@ -72,14 +156,31 @@ b.style.left=Math.random()*100+"vw";
 
 b.style.background=colors[Math.floor(Math.random()*colors.length)];
 
-b.style.animationDuration=(5+Math.random()*5)+"s";
+b.style.animationDuration=(4+Math.random()*5)+"s";
 
 b.style.animationDelay=Math.random()*5+"s";
 
-document.getElementById("balloons").appendChild(b);
+document.body.appendChild(b);
 
 }
-</script>
 
-</body>
-</html>
+// ❤️ Heart Rain
+for(let i=0;i<40;i++){
+
+let h=document.createElement("div");
+
+h.className="heart";
+
+h.innerHTML="❤";
+
+h.style.left=Math.random()*100+"vw";
+
+h.style.fontSize=(15+Math.random()*30)+"px";
+
+h.style.animationDuration=(5+Math.random()*5)+"s";
+
+h.style.animationDelay=Math.random()*5+"s";
+
+document.body.appendChild(h);
+
+}
